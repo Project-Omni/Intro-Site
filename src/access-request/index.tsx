@@ -48,7 +48,7 @@ export default function AccessRequest() {
     	    	      </p>
     	    	    </div>
 
-    	    	    <div className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl w-1/2 mx-auto">
+    	    	    <div className="bg-white shadow-sm ring-1 ring-gray-900/5 rounded-xl w-3/4 md:w-1/2 mx-auto">
     	    	      <div className="px-4 py-6 sm:p-8">
     	    	        <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
     	    	          <div className="col-span-full">
