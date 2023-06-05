@@ -1,22 +1,33 @@
+import { useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 import { Footer } from './../components/Footer'
 import { Container } from './../components/Container'
 import { Hero } from './../components/Hero'
-import { useRef } from 'react'
 
 
-const sendAccessRequest = (q1: string, q2: string) => {
+const sendAccessRequest = async (q1: string, q2: string): Promise<boolean> => {
 	const data = {q1, q2, timestamp: new Date()};
-	console.log(data)
-	fetch("https://cb2ado7g6qidl4dy7p5hmg5rbq0iuexo.lambda-url.us-east-1.on.aws/", {
+	let worked = false;
+
+	await fetch("https://cb2ado7g6qidl4dy7p5hmg5rbq0iuexo.lambda-url.us-east-1.on.aws/", {
 		method: "POST",
 		headers: {
     	'Content-Type': 'application/json',
 		},
 		body: JSON.stringify(data)
-	})
+	}).then(resp => resp.json())
+		.then(jsonResp => {
+			if (jsonResp.wasSuccessful) {
+				worked = true;
+			}
+		});
+
+	return worked;
 }
 
 export default function AccessRequest() {
+  const pageNav = useNavigate();
 	const answer1 = useRef<HTMLTextAreaElement | null>(null);
 	const answer2 = useRef<HTMLTextAreaElement | null>(null);
 
@@ -82,10 +93,10 @@ export default function AccessRequest() {
     		        <button
     		          type="submit"
     		          className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-								  onClick={() => {
+								  onClick={async () => {
 										if (answer1.current && answer1.current.value != "" && answer2.current && answer2.current?.value != "") {
-											console.log(answer2.current)
-											sendAccessRequest(answer1.current?.value!, answer2.current?.value!);
+											let sent = await sendAccessRequest(answer1.current?.value!, answer2.current?.value!);
+											if (sent) pageNav('/') 
 										}										
 								  }}
     		        >
