@@ -7,8 +7,8 @@ export function Footer() {
         <div className="flex flex-col items-center border-t border-slate-400/10 py-10 sm:flex-row-reverse sm:justify-between">
           <div className="flex gap-x-6">
             <a
-              href="https://github.com/ProjectUsher"
-              aria-label="ProjectUsher on GitHub"
+              href="https://github.com/Project-Omni"
+              aria-label="Project-Omni on GitHub"
             >
               <svg
                 aria-hidden="true"
@@ -19,7 +19,7 @@ export function Footer() {
             </a>
           </div>
           <p className="mt-6 text-sm text-slate-500 sm:mt-0">
-            {`Copyright \u00A9`} {new Date().getFullYear()} ProjectUsher. All rights
+            {`Copyright \u00A9`} {new Date().getFullYear()} Project Omni. All rights
             reserved.
           </p>
         </div>
