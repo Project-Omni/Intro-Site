@@ -4,7 +4,6 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import App from './App.tsx'
 import './index.css'
 import Home from './Home.tsx';
 import AccessRequest from './AccessRequest.tsx';
