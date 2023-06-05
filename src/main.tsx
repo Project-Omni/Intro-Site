@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import './index.css'
 import Home from './Home.tsx';
-import AccessRequest from './AccessRequest.tsx';
+import AccessRequest from './access-request';
 
 const router = createBrowserRouter([
   {
